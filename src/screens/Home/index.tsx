@@ -27,6 +27,11 @@ export function Home() {
     },
   });
 
+  function handleCreateNewCycle(form: NewCylceFormData) {
+    createNewCycle(form);
+    newCycleForm.reset();
+  }
+
   const { watch, handleSubmit } = newCycleForm;
 
   const observableTask = watch("task");
@@ -34,7 +39,7 @@ export function Home() {
 
   return (
     <HomeContainer>
-      <form onSubmit={handleSubmit(createNewCycle)}>
+      <form onSubmit={handleSubmit(handleCreateNewCycle)}>
         <FormProvider {...newCycleForm}>
           <CycleForm />
         </FormProvider>
